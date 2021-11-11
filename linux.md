@@ -1,6 +1,10 @@
-# Linux Commands
-Some linux commands.
+In linux, everyting is a file.
 
+# Kernel
+
+# Device Driver
+
+# Linux Commands
 ## Memory
 
 ## PCI
@@ -19,7 +23,7 @@ setpci
 setpci -s 0:8.0 BASE_ADDRESS_0=0xf0000000
 ```
 ### rescan/enumerate pci bus, remove a bus
-````
+```
 echo 1 > /sys/bus/pci/rescan
 echo 1 > /sys/bus/pci/devices/0000\:05:00.0/remove
 ```
