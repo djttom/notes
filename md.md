@@ -37,6 +37,11 @@ int main(int argc, char *argv[])
 }
 ```
 
+The link break in paragraph can be created with either adding two spaces `'  '` at the end of sentence  
+or use the backslash \ at the end\
+in the paragraph.  
+The backslash \ can also be used to escape some special characters.
+
 Add a horizontal line below with `***` or `___` or `---` under blank line.
 
 ---
