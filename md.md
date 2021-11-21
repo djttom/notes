@@ -5,18 +5,19 @@
 #### Heading 4
 and heading 5, 6, and so on.
 
-Heading 1 Alt
+Heading 1
 =========
+Altnate heading 1
 
-Heading 2 Alt
+Heading 2
 ---------
 Alternate Heading 1 and 2 with `===` and `---` below the text.
 
 ## Highlight
 This is *text in italic* or **text in bold** or ***text in bold italic***
 
-> this is block quote
-> This is quote with *highlight* or **highlight** or ***highlight bold in italic***
+> This is quote with *highlight* or **highlight** or ***highlight bold in italic***.
+> This is block quote with ~~strike through~~ 
 
 Put `code` or `long code` in a sentence.
 
@@ -63,6 +64,13 @@ Add a horizontal line below with `***` or `___` or `---` under blank line.
 ***
 
 ## Table
+The table with header. It has left, middle, right alignment. 
+| Syntax      | Description | Test Text     | Comment |
+| :---        |    :----:   |          ---: | ------- |
+| Header      | Title       | Here's this   |  |
+| Paragraph   | Text        | And more      |  |
+| List        | ol or ul.   | lists         |  |
+| Code        | `code`      | code          |  |
 
 ## Reference
-[Markdown cheat sheet][https://www.markdownguide.org/cheat-sheet/]
+[Markdown cheat sheet](https://www.markdownguide.org/cheat-sheet/) at <https://www.markdownguide.org/cheat-sheet>
