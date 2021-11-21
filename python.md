@@ -196,7 +196,7 @@ Identity: is, is not
 Membership: in, not in 
 ```
 
-## Modules
+## Modules and Packages
 A module is a file containing Python definitions and statements. The file name is the module name with a suffix ***.py*** appended. Within a module, the module’s name is the string value of a global variable ***`__name__`***. The module name is used to access functions defined in a module with format `mod_name.item_name`. 
 
 There are a few ways to import modules. The imported module names are placed in the importing module’s symbol table. 
@@ -224,7 +224,7 @@ The directory containing the script being run is placed at the beginning of the 
 To speed up loading modules, Python caches the compiled version of each module in directory `__pycache__` under the name `module.version.pyc`.  
 For example, in CPython release 3.3 the compiled version of spam.py would be cached as `__pycache__/spam.cpython-33.pyc`. 
 
-**Standard Modules and Built-in Functions**. 
+**Standard Modules and Built-in Functions**  
 Python comes with a library of standard modules. Some modules are built into the interpreter. 
 One particular module ***sys*** is built into every Python interpreter. 
 ```python
@@ -241,7 +241,7 @@ dir(builtins)     # list names of built-in functions and variables
 dir(__builtins__) # same as above without import builtins 
 ```
 
-## Packages 
+### Packages 
 Packages are a way of structuring Python’s module namespace by using "dotted module names". Python searches through the directories on ***sys.path*** looking for the package subdirectory.  
 The `__init__.py` files are required to make Python treat the directories containing the file as packages. Below is an example of sound package structure. 
 ```python
