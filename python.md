@@ -196,6 +196,82 @@ Identity: is, is not
 Membership: in, not in 
 ```
 
+## Modules
+A module is a file containing Python definitions and statements. The file name is the module name with a suffix ***.py*** appended. Within a module, the module’s name is the string value of a global variable ***`__name__`***. The module name is used to access functions defined in a module with format `mod_name.item_name`. 
+
+There are a few ways to import modules. The imported module names are placed in the importing module’s symbol table. 
+```python
+import fibo 
+import fibo as fib 
+# import names from a module directly into importing module’s symbol table
+from fibo import *
+from fibo import fibo1, fibo2
+from fibo import fibo1 as fib1 
+```
+
+When you run a module as script, the code in the module is executed. It is like import it but with ***`__name__`*** set to ***`'__main__'`***. 
+```
+if __name__ == '__main__':
+    import sys
+    fib(int(sys.argv[1])) 
+```
+
+When a module is imported with its name, the interpreter first searches its built-in module with that name. It then searches a file named ***mod_name.py*** in a list of directories given by the variable ***sys.path***, which is initialized with the locations below.  
+1. The directory containing the input script.  
+2. The **PYTHONPATH** and the installation-dependent default.  
+The directory containing the script being run is placed at the beginning of the search path, ahead of the standard library path. This means that the scripts in that directory will be loaded instead of modules of the same name in the library directory.  
+
+To speed up loading modules, Python caches the compiled version of each module in directory `__pycache__` under the name `module.version.pyc`.  
+For example, in CPython release 3.3 the compiled version of spam.py would be cached as `__pycache__/spam.cpython-33.pyc`. 
+
+**Standard Modules and Built-in Functions**. 
+Python comes with a library of standard modules. Some modules are built into the interpreter. 
+One particular module ***sys*** is built into every Python interpreter. 
+```python
+dir()         # list of names defined in current scope or in the given object 
+import sys    # import sys module
+dir(sys)      # list all names defined in sys module 
+len(dir(sys)) # return number of names in sys module
+sys.modules   # dictionary of all standard modules
+help(‘modules’)   # list of all standard modules 
+sys.ps1           # prompt string: >>>
+sys.ps2           # prompt string: ... 
+import builtins   # import module builtins 
+dir(builtins)     # list names of built-in functions and variables 
+dir(__builtins__) # same as above without import builtins 
+```
+
+## Packages 
+Packages are a way of structuring Python’s module namespace by using "dotted module names". Python searches through the directories on ***sys.path*** looking for the package subdirectory.  
+The `__init__.py` files are required to make Python treat the directories containing the file as packages. Below is an example of sound package structure. 
+```python
+sound/                      # top-level sound package 
+    __init__.py             # initialize the sound package 
+    formats/                # sub-package for file format conversion
+        __init__.py
+        waveread.py 
+        wavewrite.py 
+        … 
+     effects/               # sub-package for sound effects 
+        __init__.py 
+        echo.py 
+        surround.py
+        …
+    filters/                # sub-package for filters 
+        __init__.py
+        equalizer.py 
+        vocoder.py
+        … 
+
+# Usages with the package**
+import sound.effects.echo
+sound.effects.echo.echofilter(input, output, delay=0.7, atten=4)
+from sound.effects import echo 
+echo.echofilter(input, output, delay=0.7, atten=4)
+from sound.effects.echo import echofilter 
+echofilter(input, output, delay=0.7, atten=4)
+```
+
 ## Virtual Environment 
 Each project should have its own packages separate from other projects.  
 The virtual environment is created to have a space where we can install packages specific to a certain project.  
