@@ -91,22 +91,28 @@ spam and eggs
 The built-in data structures include lists, tuples and sequence, sets, dictionaries, and etc.
 
 ### List
-The list data type has some basic methods. Use help(list) to get the help information. They are `list.append(), list.extend(), list.insert(), list.remove(), list.pop(), list.clear(), list.index(), list.count(), list.reverse(), list.sort(), list.copy().`  
-The lists can be used as stacks, where the last element added is the first element retrieved (last-in, first-out). The two methods are list.append() and list.pop().  
-The lists can be used as queues too, where the first element added is the first element retrieved (first-in, first-out).  
-List comprehensions provide a concise way to create lists from other iterables. A list comprehension consists of brackets containing an expression followed by a for clause, then zero or more for clauses and or if clauses.  
+The list data type has some basic methods. Use help(list) to get the help information.  
+They are `list.append(), list.extend(), list.insert(), list.remove(), list.pop(), list.clear(), list.index(), list.count(), list.reverse(), list.sort(), list.copy().`  
+The lists can be used as stacks, where the last element added is the first element retrieved (last-in, first-out). The two methods are `list.append() and list.pop()`.  
+The lists can be used as queues too, where the first element added is the first element retrieved (first-in, first-out).
+
+***List Comprehension***  
+List comprehensions provide a concise way to create lists from other iterables. A list comprehension consists of **brackets** containing an expression followed by a **for** clause, then zero or more for clauses and or if clauses.  
 ```python
 squares = [x*x for x in range(10)] 
 xy =  [(x,y) for x in [1,2,3] for y in [2,3,4] if x != y] 
 The nested list comprehensions. 
 [[row[i] for row in ll] for i in range(4)] where ll is a list of list. 
+```
 
-Its general syntax is below. 
+Its general syntax is below.
+```python 
 [expression for item1 in iterable1 if condition1 
             for item2 in iterable2 if condition2
             … 
             for itemN in iterableN if conditionN]
-It is roughly equivalent to the following code. 
+            
+# it is roughly equivalent to the following code. 
 s = []
 for item1 in iterable1:
     if condition1: 
@@ -117,6 +123,7 @@ for item1 in iterable1:
                     if conditionN:
                         s.append(expression) 
 ```
+
 Some Examples 
 ```python
 nn = [-1, 0, 1, 2, 3, 4, 5] 
@@ -152,11 +159,14 @@ s = {x for x in ‘abcdecde’ if x not in ‘cd’}  # s is a set {‘a’,’b
 ### Dictionaries 
 A dictionary is a set of key: value pairs with the keys are unique within one dictionary. It is an error to extract a value using a non-existent key. 
 ```python
+ed = {}         # ed is an empty dictionary or ed = dict() 
 d = {‘jack’: 40, ‘tom’: 45, ‘david’: 25}  # d has 3 key-value pairs
 d[‘jack’]       # item = 40 with key ‘jack’ 
 del d[‘tom’]    # delete item ‘tom’:45
-ed = {}         # ed is an empty dictionary or ed = dict() 
 ks = list(d)    # ks is a list of keys of d 
+d.keys()
+d.items()
+d.get('jack')   # return 40
 ‘jack’ in d     # return True
 ```
 
@@ -175,12 +185,12 @@ for v in sorted(s1):          # print out sorted item while s1 unaltered
 ```
 
 ### Conditions 
-In addition to while and if, there are other condition operators.  
-The operators in and not in check whether a value occurs (does not occur) in a sequence.  
-The operators is and is not compare two objects are really the same object.  
-Comparisons can be chained. For example, a < b == c tests whether a is less than b and moreover b is equal to c.  
-The comparison may be combined with boolean operators and and or, and may be negated with not.  
-The assignment inside an expression in Python must be down with walrus operator :=. This is to avoid the problem in C that the = is used when == is intended.  
+In addition to `while` and `if`, there are other condition operators.  
+The operators `in` and `not in` check whether a value occurs (does not occur) in a sequence.  
+The operators `is` and `is not` compare two objects are really the same object.  
+Comparisons can be chained. For example, `a < b == c` tests whether a is less than b and moreover b is equal to c.  
+The comparison may be combined with boolean operators `and` and `or`, and may be negated with `not`.  
+The assignment inside an expression in Python must be down with walrus operator `:=`. This is to avoid the problem in C that the = is used when == is intended.  
 Sequence objects may be compared to other objects with the same sequence type. The comparison uses lexicographical ordering: first the first two items are compared, and if they diff this determines the outcome of the comparison. If they are equal, the next two items are compared, and so on.  
 
 ### Operators 
