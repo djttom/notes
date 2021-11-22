@@ -196,8 +196,67 @@ Identity: is, is not
 Membership: in, not in 
 ```
 
+## Input and Output
+### Formatted String Literals
+The formatted string literal, f-strings, includes the value of python expression inside a string by prefixing the string with `f` or `F` and writing expression as `{expression}`
+```python
+import math
+print(f'The value of pi is {math.pi:.3f}')
+s = f'The value of pi is {match.pi:.3f}'
+print(s)
+```
+
+### The String .format() method
+The basic usage of the `str.format(*args, **kargs)` is below.
+```python
+print('{0} and {1}'.format('spam', 'egg'))    # spam and egg
+print('{1} and {0}'.format('spam', 'egg'))    # egg and spam 
+
+The positional and keyword argument can be arbitrarily combined. 
+print('The story of {0}, {1}, and {other}'.format('Bill', 'Jack', other='George')) 
+
+The variables can be referenced by name instead of positions. 
+table={'bill': 4001, 'jack':4003, 'george':4005}
+print('Bill: {0[bill]:d}; Jack: {0[jack]:d}; George: {0[george]:d}'.format(table))
+print('Bill: {bill:d}; Jack: {jack:d}; George: {george:d}'.format(**table))
+```
+
+The format string syntax is at <https://docs.python.org/3/library/string.html#formatstrings>.  
+The general form of a standard format specifier is:
+```python
+format_spec     ::=  [[fill]align][sign][#][0][width][grouping_option][.precision][type]
+fill            ::=  <any character>
+align           ::=  "<" | ">" | "=" | "^"
+sign            ::=  "+" | "-" | " "
+width           ::=  digit+
+grouping_option ::=  "_" | ","
+precision       ::=  digit+
+type            ::=  "b" | "c" | "d" | "e" | "E" | "f" | "F" | "g" | "G" | "n" | "o" | "s" | "x" | "X" | "%"
+```
+
+### Reading and Writing Files
+The builtin function `open(file, mode, buffering=-1, …)` returns a file object. It is good practice to use with keyword when dealing with file object. The advantage is that the file is properly closed after its suite finishes, even if an exception is raised at some point.
+```python
+with open('myfile') as f:
+    data = f.read()
+print(f.closed)  # print True since it's closed automatically by the with clause
+```
+The methods and data of file objects include `.read(), .readline(), .seek(), .close(), closed, name`, and etc.
+
+**Saving structured data with json**  
+```python
+import json
+d = {'name':'tom', 'age':20}
+s = json.dumps(d)         # serialiing dict object d into string s '{"name": "tom", "age": 20}'
+a = json.loads(s)         # deserializing the string s to dict object a
+print(a['name']           # print 'tom'
+
+json.dump(d, f)           # serialing dict object d and dump to file object f
+json.load(f)              # decode text from file object f
+```
+
 ## Modules and Packages
-A module is a file containing Python definitions and statements. The file name is the module name with a suffix ***.py*** appended. Within a module, the module’s name is the string value of a global variable ***`__name__`***. The module name is used to access functions defined in a module with format `mod_name.item_name`. 
+A module is a file containing Python definitions and statements. The file name is the module name with a suffix ***.py*** appended. Within a module, the module’s name is the string value of a global variable ***`__name__`***. The module name is used to access functions defined in a module with format `mod_name.item_name`.
 
 There are a few ways to import modules. The imported module names are placed in the importing module’s symbol table. 
 ```python
