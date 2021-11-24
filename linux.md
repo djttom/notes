@@ -36,8 +36,11 @@ i2cdetect -y 3
 
 ## Miscs
 ### service
+The service command is to run a system V init script that is located under /etc/init.d/SCRIPT
 ```
+service SCRIPT COMMAND [OPTIONS]
 service --status-all
+service --help | -h | --version
 
 # search and start redist service
 service redis
