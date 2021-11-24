@@ -8,7 +8,7 @@ In linux, everyting is a file.
 ## Memory
 
 ## PCI
-### display pci device information
+### lspci display pci device information
 ```
 lspci -s [[[[<doman>]:]<bus>]:][<slot>[.[<func>]] -d [<vendor id>]:[<device id>][:<class id>]
       -t -m -mm -v -vv -vvv -x -xxx -xxxx -v -vv -n -nn
@@ -22,7 +22,7 @@ lspci -d 1137:a005    # display cisco silicon-one asic device
 setpci 
 setpci -s 0:8.0 BASE_ADDRESS_0=0xf0000000
 ```
-### rescan/enumerate pci bus, remove a bus
+### rescan bus and remove a bus
 ```
 echo 1 > /sys/bus/pci/rescan
 echo 1 > /sys/bus/pci/devices/0000\:05:00.0/remove
@@ -35,6 +35,15 @@ i2cdetect -y 3
 ```
 
 ## Miscs
+### service
+```
+service --status-all
+
+# search and start redist service
+service redis
+/etc/init.d/redis {start|stop|restart|force-reload}
+/etc/init.d/redis start
+```
 ### tar
 ```
 tar -cvf filename.tar <directory ...>        # create tar file
@@ -42,3 +51,7 @@ tar -cvzf filename.tar.gz <directory ...>    # create gzip tar file
 tar -xvf filename.tar.gz.                    # extract gzip tar file
 tar -t --list
 ```
+### df
+`df -h .`
+### du
+`du -sh .`
