@@ -35,6 +35,12 @@ i2cdetect -y 3
 ```
 
 ## Miscs
+### df du
+```
+df -h .
+du -sh *
+```
+
 ### service
 The service command is to run a system V init script that is located under /etc/init.d/SCRIPT
 ```
@@ -54,7 +60,3 @@ tar -cvzf filename.tar.gz <directory ...>    # create gzip tar file
 tar -xvf filename.tar.gz.                    # extract gzip tar file
 tar -t --list
 ```
-### df
-`df -h .`
-### du
-`du -sh .`
