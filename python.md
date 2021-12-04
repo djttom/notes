@@ -363,5 +363,10 @@ deactivate
 A guide to Python’s virtual environments 
 <https://towardsdatascience.com/virtual-environments-104c62d48c54>
 
+## SWIG
+[SWIG C-Python](https://www.rmedgar.com/blog/swig-c-python-and-other-tales/)<https://www.rmedgar.com/blog/swig-c-python-and-other-tales/>
+The PYTHONPATH should include the path to the module built by SWIG.
+Linux env LD_LIBRARY_PATH should include the directories where libraries should be searched for, before the standard directories.
+
 ## Reference
 [Python 3 tutorial](https://docs.python.org/3/tutorial/index.html)
