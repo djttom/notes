@@ -54,6 +54,15 @@ service redis
 /etc/init.d/redis start
 ```
 ### tar
+Syntax usage
+```
+tar {A|c|d|r|t|u|x}[GnSkUWOmpsMBiajJzZhPlRvwo] [ARG...]
+-c, --create, create a new archive file
+-x, --extract, extract an archive file
+-v, show progress of the archive file
+-f, file name of the archive file
+```
+[Some examples](https://www.tecmint.com/18-tar-command-examples-in-linux/)
 ```
 tar -cvf filename.tar <directory ...>        # create tar file
 tar -cvzf filename.tar.gz <directory ...>    # create gzip tar file
