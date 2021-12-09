@@ -4,6 +4,16 @@ In linux, everyting is a file.
 
 # Device Driver
 
+# Linux Environment
+## Shared Libraries
+[HowTo Shared Libraries](https://tldp.org/HOWTO/Program-Library-HOWTO/shared-libraries.html).  
+In a nutshell, when it's looking for a dynamic library (.so file) the linker tries:
+- directories listed in the environment variable **LD_LIBRARY_PATH** (DYLD_LIBRARY_PATH on OSX);
+- directories listed in the executable's `-rpath`, which is specified in linking;
+- directories on the system search path, which consists of the entries in `/etc/ld.so.conf` plus `/lib` and `/usr/lib`
+
+The env **LD_LIBRARY_PATH** is a colon-separated set of directories where libraries should be searched for first, before the standard set of directories
+
 # Linux Commands
 ## Memory
 
