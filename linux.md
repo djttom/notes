@@ -78,4 +78,9 @@ tar -cvf filename.tar <directory ...>        # create tar file
 tar -cvzf filename.tar.gz <directory ...>    # create gzip tar file
 tar -xvf filename.tar.gz.                    # extract gzip tar file
 tar -t --list
+
+# first extract a few folders from the compress tar file
+tar -xvf dev-sdk-1.tar.gz dev-sdk-1/driver/include dev-sdk-1/driver/lib
+# create a new compressed tar file with top directory name changed
+tar -czvf dev-lib-1.tar.gz dev-sdk-1 --transform='s,^dev-sdk-1,dev-lib-1,'
 ```
