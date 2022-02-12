@@ -1,10 +1,18 @@
+# Table of Content
+1. [Overview](#Overview)
+2. [Kernel](#Kernel)
+3. [Device Driver](#DeviceDriver)
+4. [Linux Environment](#Environment)
+5. [Linux Commands](#LinuxCommand)
+
+# Overview
 In linux, everyting is a file.
 
-# Kernel
+# Kernel <a name="Kernel"></a>
 
-# Device Driver
+# Device Driver <a name="DeviceDriver"></a>
 
-# Linux Environment
+# Linux Environment <a name="Environment"></a>
 ## Shared Libraries
 [Shared Libraries search orders:](https://amir.rachum.com/blog/2016/09/17/shared-libraries/)
 1. directories listed in the executable’s `rpath`.
@@ -15,7 +23,42 @@ In linux, everyting is a file.
 
 The env **LD_LIBRARY_PATH** is a colon-separated set of directories where libraries should be searched for first, before the standard set of directories
 
-# Linux Commands
+## udev
+The udev is the device manager for linux kernel that creates/removes device nodes in the `/dev` directory dynamically. It runs in userspace and the user can change device names using udev rules. [Introduction to device management](https://www.linux.com/news/udev-introduction-device-management-modern-linux-system/)  
+When a device is added or removed, kernel events are produced which will notify udev in user space.  
+The udev needs the kernel configs `CONFIG_HOTPLUG/NET/UNIX/SYSFS/PROC_FS/TEMPFS/INOTIFY/SIGNALFD=y`  
+The udev depends on the proc and sys file systems and they must be mounted on `/proc` and `/sys`  
+
+### Kernel device event management
+1. when bootup is initialized, the `/dev` directory is mounted in tmpfs: `sudo mount -t tmpfs udev /dev`.
+2. The `/dev` directory is populated with the static device nodes from `/lib/udev/devices`.
+3. The udev daemon is started. It listens and collects uevents from the kernel netlink socket for all devices connected to the system.
+4. The udev daemon will parse the uevent data and match the data with rules specified in `/etc/udev/rules.d`, create the device nodes and symbolic links for the devices as specified in the rules.
+5. The udev daemon reads the rules from `/etc/udev/rules.d/*.rules` and stores them in the memory. whenever rules are added/removed/modified, udevd receives an inotify event, it will read the changes and updates the memory.
+
+udev files 
+```
+/dev/*                       # created device files
+/lib/udev/*                  # helper programs called from udev rules 
+/lib/udev/devices/*          # static /dev content
+/lib/udev/rules.d/*.rules    # standard udev event matching rules               
+                                                                                
+/etc/udev/*                                                                     
+/etc/udev/udev.conf          # udev config file                                 
+/etc/udev/mount.backlist                                                                                
+/etc/udev/rules.d/*.rules    # local/custom udev event matching rules 
+```
+
+The linux command utility `udevadm` is created to manage devices and nodes in a system.
+```
+udevadm [--debug] [--version] [--help]
+udevadm command [options] 
+command: info, trigger, settle, control, monitor, test
+
+$> udevadm info -a -p /sys/class/net/eth0/
+```
+
+# Linux Commands <a name="LinuxCommand"></a>
 ## Memory
 
 ## PCI
