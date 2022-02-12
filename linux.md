@@ -92,6 +92,13 @@ scp: less optimize and speed, more secure (use ssh). use scp for simple day to d
 rsync: optimize and speed, less secure (similar to plain http), more secure with `--rsh=ssh`; provides more options; use delta transfer algorithm if dest already exists; transfer and replace whole file; copy symlinks as symlinks with option `-l`.  
 ```
 scp -r tom@www.myserver.com:/user/document /root/tom
-rsync -rlv tom@www.myserver.com:/user/document /root/tom 
-# the -l preserve symbolic links
+
+rsync -avz ... 
+-v is verbose; -z is compress during transfer;
+-a is archive mode, equal to -rlptgoD, recursive, symlinks, preserve permissions, group, owner, devices, ...
+
+rsync -rlptzv --delete --exclude='.git' --exclude="*.o" --exclude="*.Td" --exclude="*.a" --exclude="__pycache__" --progress "tom@myserver.com:/nobackup/tom/code /root/tom/code
+--progress to show progress during transfer 
+--delete to delte extra files from dest dirs.
+--exclude=PATTERN to exclude files matching pattern;
 ```
