@@ -85,3 +85,13 @@ tar -xvf dev-sdk-1.tar.gz dev-sdk-1/driver/include dev-sdk-1/driver/lib
 # create a new compressed tar file with top directory name changed
 tar -czvf dev-lib-1.tar.gz dev-sdk-1 --transform='s,^dev-sdk-1,dev-lib-1,'
 ```
+
+### scp and rsync
+both for remote and local copy files.  
+scp: less optimize and speed, more secure (use ssh). use scp for simple day to day work.   
+rsync: optimize and speed, less secure (similar to plain http), more secure with `--rsh=ssh`; provides more options; use delta transfer algorithm if dest already exists; transfer and replace whole file; copy symlinks as symlinks with option `-l`.  
+```
+scp -r tom@www.myserver.com:/user/document /root/tom
+rsync -rlv tom@www.myserver.com:/user/document /root/tom 
+# the -l preserve symbolic links
+```
