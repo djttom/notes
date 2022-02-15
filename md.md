@@ -1,7 +1,7 @@
 # My Markdown Notes
 Table of Content
-1. [Headings](#headings)
-2. [Hightlights](#highlights)
+1. [Headings](#heading-1)
+2. [Hightlights](#highlight)
 3. [List](#list)
 4. [Table](#table)
 
@@ -19,7 +19,7 @@ Heading 2
 ---------
 Alternate Heading 1 and 2 with `===` and `---` below the text.
 
-## Highlight {#highlights}
+## Highlight
 This is *text in italic* or **text in bold** or ***text in bold italic***
 
 > This is quote with *highlight* or **highlight** or ***highlight bold in italic***.
@@ -52,7 +52,7 @@ Add a horizontal line below with `***` or `___` or `---` under blank line.
 
 ---
 
-## List {#list}
+## List
 ### Unordered List
 - item 1
   - sub item 1
@@ -74,7 +74,7 @@ Add a horizontal line below with `***` or `___` or `---` under blank line.
 
 ***
 
-## Table {#table}
+## Table
 The table with header. It has left, middle, right alignment. 
 | Syntax      | Description | Test Text     | Comment |
 | :---        |    :----:   |          ---: | ------- |
