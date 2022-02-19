@@ -1,18 +1,21 @@
 # Table of Content
-1. [Overview](#Overview)
-2. [Kernel](#Kernel)
-3. [Device Driver](#DeviceDriver)
-4. [Linux Environment](#Environment)
-5. [Linux Commands](#LinuxCommand)
+1. [Overview](#vverview)
+2. [Kernel](#kernel)
+3. [Device Driver](#device-driver)
+4. [Linux Environment](#environment)
+   1. [shared libraries](shared-libraries) [udev](#udev)
+5. [Linux Commands](#linux-command)
+   1. [df du](#df-du) [tar](#tar)
+   2. [scp rsync](#scp-rsync) [find grep xargs](#find-grep-xargs)
 
 # Overview
 In linux, everyting is a file.
 
-# Kernel <a name="Kernel"></a>
+# Kernel 
 
-# Device Driver <a name="DeviceDriver"></a>
+# Device Driver 
 
-# Linux Environment <a name="Environment"></a>
+# Linux Environment 
 ## Shared Libraries
 [Shared Libraries search orders:](https://amir.rachum.com/blog/2016/09/17/shared-libraries/)
 1. directories listed in the executable’s `rpath`.
@@ -22,6 +25,8 @@ In linux, everyting is a file.
 5. Default system libraries - usually `/lib` and `/usr/lib` (skipped if compiled with -z nodefaultlib
 
 The env **LD_LIBRARY_PATH** is a colon-separated set of directories where libraries should be searched for first, before the standard set of directories
+
+The command **`ldd <elf or obj>`** is used to print out shared object dependencies.
 
 ## udev
 The udev is the device manager for linux kernel that creates/removes device nodes in the `/dev` directory dynamically. It runs in userspace and the user can change device names using udev rules. [Introduction to device management](https://www.linux.com/news/udev-introduction-device-management-modern-linux-system/)  
@@ -129,7 +134,7 @@ tar -xvf dev-sdk-1.tar.gz dev-sdk-1/driver/include dev-sdk-1/driver/lib
 tar -czvf dev-lib-1.tar.gz dev-sdk-1 --transform='s,^dev-sdk-1,dev-lib-1,'
 ```
 
-### scp and rsync
+### scp rsync
 both for remote and local copy files.  
 scp: less optimize and speed, more secure (use ssh). use scp for simple day to day work.   
 rsync: optimize and speed, less secure (similar to plain http), more secure with `--rsh=ssh`; provides more options; use delta transfer algorithm if dest already exists; transfer and replace whole file; copy symlinks as symlinks with option `-l`.  
@@ -144,4 +149,13 @@ rsync -rlptzv --delete --exclude='.git' --exclude="*.o" --exclude="*.Td" --exclu
 --progress to show progress during transfer 
 --delete to delte extra files from dest dirs.
 --exclude=PATTERN to exclude files matching pattern;
+```
+
+### find grep xargs
+```
+# search pattern in all files under the_directory
+grep -r pattern the_directory
+
+# search pattern in all files from find output of list of files
+find . -name "*.[ch]" | xargs grep pattern
 ```
