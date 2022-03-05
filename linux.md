@@ -6,7 +6,7 @@
    1. [shared libraries](shared-libraries) [udev](#udev)
 5. [Linux Commands](#linux-command)
    1. [df du](#df-du) [tar](#tar)
-   2. [scp rsync](#scp-rsync) [find grep xargs](#find-grep-xargs)
+   2. [cp scp rsync](#cp-scp-rsync) [find grep xargs](#find-grep-xargs)
 
 # Overview
 In linux, everyting is a file.
@@ -134,7 +134,7 @@ tar -xvf dev-sdk-1.tar.gz dev-sdk-1/driver/include dev-sdk-1/driver/lib
 tar -czvf dev-lib-1.tar.gz dev-sdk-1 --transform='s,^dev-sdk-1,dev-lib-1,'
 ```
 
-### scp rsync
+### cp scp rsync
 both for remote and local copy files.  
 scp: less optimize and speed, more secure (use ssh). use scp for simple day to day work.   
 rsync: optimize and speed, less secure (similar to plain http), more secure with `--rsh=ssh`; provides more options; use delta transfer algorithm if dest already exists; transfer and replace whole file; copy symlinks as symlinks with option `-l`.  
@@ -142,13 +142,17 @@ rsync: optimize and speed, less secure (similar to plain http), more secure with
 scp -r tom@www.myserver.com:/user/document /root/tom
 
 rsync -avz ... 
+-a is archive mode same as: -rlptgoD, is recursive, symlinks, preserve permissions, group, owner, devices, ...
 -v is verbose; -z is compress during transfer;
--a is archive mode, equal to -rlptgoD, recursive, symlinks, preserve permissions, group, owner, devices, ...
 
 rsync -rlptzv --delete --exclude='.git' --exclude="*.o" --exclude="*.Td" --exclude="*.a" --exclude="__pycache__" --progress "tom@myserver.com:/nobackup/tom/code /root/tom/code
 --progress to show progress during transfer 
 --delete to delte extra files from dest dirs.
 --exclude=PATTERN to exclude files matching pattern;
+
+cp -av
+-a is archive mode same as: -dR --preserve=all
+-v is verbose; -r|-R is copy recursively
 ```
 
 ### find grep xargs
