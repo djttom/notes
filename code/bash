@@ -1,0 +1,15 @@
+#! /usr/bin/env bash
+
+echo "This is my bash script"
+
+for x in 1 2 3
+do
+    echo "value of x is $x"
+done
+
+for f in ./*.c; do
+    echo "ls -l $f"
+    ls -l $f
+    echo "wc $f"
+    wc $f
+done
