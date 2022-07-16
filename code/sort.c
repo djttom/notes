@@ -145,18 +145,34 @@ void swap (int *a, int *b)
     *a = *b; *b = t;
 }
 
+/*
+ * pick the last element as pivot, compare and place the pivot element at 
+ * its correct position in sorted array, place all smaller itemss than pivot
+ * to the left of pivot, and all greater items to the right.
+ */
 int partition (int s[], int low, int high)
 {
-    int pivot = s[high];
     int i, j;
+    int pivot;
+
+    // pick last element as pivot
+    pivot = s[high];
 
     i = low - 1;
     for (j = low; j < high; j++) {
         if (s[j] < pivot) {
+            // i always points to the last processed item that is smaller than
+            // pivot, and item i+1 could be greater than pivot.
+            //
+            // when item j is smaller than pivot, swap it with the
+            // item at i+1 which is larger than pivot, because i always 
+            // point to last item that is processed and smaller than pivot.
             i++;
             swap(&s[i], &s[j]);
         }
     }
+    // swap pivot and item i+1 (point to first item larger than pivot),
+    // now i+1 is the pivot position after swap
     swap(&s[i + 1], &s[high]);
     return (i + 1);
 }
