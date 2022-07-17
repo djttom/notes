@@ -1,0 +1,9 @@
+# ignore all logs
+*.log
+# ignore all files starting with .
+.*
+!.gitignore
+
+# ignore all build sub-directories
+# the double asterisk ** matches zero or more directories
+**/build
