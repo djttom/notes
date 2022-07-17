@@ -1,3 +1,5 @@
+''' sort functions '''
+
 def merge_sort(s):                                                              
     ''' divide and conquer                                                      
         divide into two sub-sequence, compare and merge back recursively        
@@ -31,11 +33,36 @@ def merge_sort(s):
             k += 1; j += 1                                                      
                                                                                 
                                                                                 
-def test_merge_sort():                                                          
-    s = [38, 27, 43, 3, 9, 82, 10]                                              
+def partition(s, l, r):
+    pivot = s[r]
+    i = l - 1
+
+    for j in range(l, r):
+        if s[j] < pivot:
+            i += 1
+            s[i], s[j] = s[j], s[i]
+    # swap pivot with the first greater item at i+1
+    s[i + 1], s[r] = s[r], s[i + 1]
+    return i + 1
+
+def quick_sort(s, l, r):
+    if l < r:
+        pi = partition(s, l, r)
+        quick_sort(s, l, pi - 1)
+        quick_sort(s, pi + 1, r)
+
+                                                                                
+if __name__ == '__main__':                                                      
+    s0 = [38, 27, 43, 3, 9, 82, 10]                                              
+
+    print("test merge sort")
+    s = s0[:]
     print("before sort:", s)                                                    
     merge_sort(s)                                                               
     print(" after sort:", s)                                                    
-                                                                                
-if __name__ == '__main__':                                                      
-    test_merge_sort()
+
+    print("test quick sort")
+    s = s0[:]
+    print("before sort:", s)                                                    
+    quick_sort(s, 0, len(s) - 1)
+    print(" after sort:", s)                                                    

@@ -88,25 +88,6 @@ int merge_sort(int s[], int l, int r)
     return 0;
 }
 
-void test_merge_sort()
-{
-    int i;
-    int S0[] = {38, 27, 43, 3, 9, 82, 10};
-    int n0 = sizeof (S0) / 4;
-
-    printf("test merge sort\n");
-    printf("before sort: ");
-    for (i = 0; i < n0; i++) {
-        printf("%2d ", S0[i]);
-    }
-    printf("\n");
-    printf(" after sort: ");
-    merge_sort(S0, 0, n0 - 1);
-    for (i = 0; i < n0; i++) {
-        printf("%2d ", S0[i]);
-    }
-    printf("\n");
-}
 
 /*
  * quick sort
@@ -235,8 +216,6 @@ int main(void)
 {
     printf("%s\n", __FILE__);
 
-    //test_merge_sort();
-    //test_quick_sort();
     test_sort();
 
     return 0;
