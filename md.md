@@ -2,7 +2,9 @@
 Table of Content
 1. [Headings](#heading-1)
 2. [Hightlights](#highlight)
-3. [List](#list)
+3. [List](#list) 
+   1. [Unordered List](#unordered-list)
+   2. [Ordered List](#ordered-list) 
 4. [Table](#table)
 
 # Heading 1 (#headings)
